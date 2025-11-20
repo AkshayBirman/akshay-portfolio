@@ -1,163 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Akshay Birman | Portfolio</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#f5f7fb;
-      --card:#ffffff;
-      --muted:#6b7280;
-      --accent:#0ea5e9;
-      --radius:14px;
-      --transition:300ms cubic-bezier(.2,.9,.2,1);
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+    /* Gradient Background */
+    body { 
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a, #2e2e2e);
+      color: #eee;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background:linear-gradient(180deg,#f7f9fc 0%, var(--bg) 100%);
-      color:#111827;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-      padding-bottom:60px;
+    header {
+      background: linear-gradient(135deg, #000000, #222222);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
     }
 
-    /* Header */
-    header{
-      background:#0f1724;
-      color:white;
-      text-align:center;
-      padding:64px 20px;
-      border-bottom-left-radius:20px;
-      border-bottom-right-radius:20px;
-      box-shadow:0 8px 30px rgba(2,6,23,0.2);
-      transform:translateZ(0);
-    }
-    header h1{font-size:2.4rem; letter-spacing:0.4px; margin-bottom:6px; font-weight:700;}
-    header p{color:#cbd5e1; margin-top:6px; font-weight:400;}
+    header h1 { font-size: 3rem; }
+    header p { margin-top: 10px; font-size: 1.2rem; color: #ddd; }
 
-    /* Nav */
-    nav{
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      padding:12px 20px;
-      margin-top:16px;
-      position:sticky;
-      top:12px;
-      z-index:40;
-    }
-    nav a{
-      color:#0f1724;
-      text-decoration:none;
-      padding:8px 14px;
-      border-radius:999px;
-      font-weight:600;
-      background:rgba(255,255,255,0.7);
-      box-shadow:0 2px 10px rgba(15,23,36,0.04);
-      transition:all 180ms;
-    }
-    nav a:hover{transform:translateY(-3px); box-shadow:0 8px 30px rgba(2,6,23,0.08);}
+    nav { background: #000; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 100; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-size: 1.1rem; }
+    nav a:hover { color: #00aaff; }
 
-    /* Main container */
-    main{max-width:980px; margin:28px auto; padding:0 18px;}
+    section { padding: 60px 20px; max-width: 900px; margin: auto; }
+    h2 { margin-bottom: 20px; font-size: 2.2rem; color: #fff; }
 
-    h2{font-size:1.5rem; margin-bottom:12px; color:#0f1724;}
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      padding:18px;
-      margin:14px 0;
-      box-shadow:0 6px 30px rgba(2,6,23,0.05);
-      transition:transform var(--transition), box-shadow var(--transition);
-      overflow:hidden;
-    }
-    .card:hover{transform:translateY(-6px); box-shadow:0 14px 40px rgba(2,6,23,0.08);}
-
-    p.lead{color:var(--muted); font-weight:500; margin-bottom:8px;}
-
-    /* Highlights grid */
-    .three-col{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-top:12px}
-    .highlight{
-      display:flex; gap:12px; align-items:flex-start; padding:12px; border-radius:12px;
-      background:linear-gradient(180deg, rgba(15,23,36,0.02), rgba(15,23,36,0.01));
-      border:1px solid rgba(15,23,36,0.03);
-    }
-    .icon{width:40px; height:40px; flex:0 0 40px; display:inline-grid; place-items:center; border-radius:10px; background:linear-gradient(135deg,#eef2ff,#e0f2fe); color:#0f1724}
-    .highlight strong{display:block; margin-bottom:6px; font-weight:700}
-
-    /* Accordion (summary/details) */
-    details{
-      margin:12px 0;
-      border-radius:12px;
-      overflow:hidden;
-      border:1px solid rgba(2,6,23,0.06);
-      background:linear-gradient(180deg,#fff,#fbfdff);
-    }
-    summary{
-      list-style:none;
-      cursor:pointer;
-      padding:14px 18px;
-      display:flex; align-items:center; gap:12px;
-      font-weight:600;
-      font-size:1.02rem;
-      user-select:none;
-    }
-    summary::-webkit-details-marker{display:none}
-    summary:focus{outline:none}
-    summary .caret{
-      margin-left:auto;
-      transition:transform var(--transition);
-      width:18px; height:18px; display:inline-block;
-    }
-    details[open] summary .caret{transform:rotate(180deg)}
-    .panel{
-      padding:14px 18px 20px;
-      border-top:1px solid rgba(2,6,23,0.04);
-      animation:fadeInUp 280ms ease;
-    }
-    @keyframes fadeInUp{
-      from{opacity:0; transform:translateY(6px)}
-      to{opacity:1; transform:none}
+    /* Card */
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: 0.3s;
     }
 
-    /* Themed backgrounds for each sport's panel */
-    .volley-bg{background:linear-gradient(135deg,#f0f7ff 0%, #e6f0ff 100%); border-radius:12px;}
-    .basket-bg{background:linear-gradient(135deg,#fff7ed 0%, #fff2dd 100%); border-radius:12px;}
-    .kabaddi-bg{background:linear-gradient(135deg,#f6fff4 0%, #e8ffeb 100%); border-radius:12px;}
-
-    /* Skills grid */
-    .skills-list{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-top:8px}
-    .skill-pill{background:linear-gradient(180deg,#fff,#fcfdff); border-radius:10px; padding:10px; text-align:center; font-weight:600; box-shadow:0 6px 18px rgba(2,6,23,0.04)}
-
-    /* Contact */
-    .contact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:12px}
-    .contact-card{padding:14px; border-radius:12px; background:linear-gradient(180deg,#fff,#fbfdff); border:1px solid rgba(2,6,23,0.04)}
-
-    footer{margin-top:28px; text-align:center; color:#94a3b8; font-size:0.92rem}
-
-    /* small screens */
-    @media (max-width:520px){
-      header h1{font-size:1.6rem}
-      nav{flex-wrap:wrap}
-      .icon{width:36px; height:36px}
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 14px rgba(255,255,255,0.1);
     }
+
+    /* Accordion button */
+    .accordion {
+      background: rgba(255,255,255,0.08);
+      padding: 15px;
+      cursor: pointer;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .accordion:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* Accordion content */
+    .panel {
+      display: none;
+      padding: 15px;
+      background: rgba(255,255,255,0.07);
+      margin-top: 8px;
+      border-radius: 10px;
+      line-height: 1.6;
+    }
+
+    .skills-list, .three-col { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 15px; 
+    }
+
+    .footer {
+      background: #000;
+      color: white;
+      padding: 40px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    a.link-btn {
+      color: #00aaff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
   </style>
 </head>
 
 <body>
+
   <header>
     <h1>Akshay Birman</h1>
-    <p>Athlete • E-Sports Aspirant • Creative Storyteller • Student</p>
+    <p>Athlete • E-Sports Player • Creative Editor • Student</p>
   </header>
 
   <nav>
@@ -169,242 +113,126 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <main>
-    <!-- ABOUT -->
-    <section id="about">
-      <h2>About Me</h2>
-      <div class="card">
-        <p class="lead">I am Akshay Birman — a multi-skilled student, athlete, e-sports aspirant, and creative storyteller. I balance academics, sports, editing, and growth with consistent practice and discipline.</p>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>I am Akshay Birman — a multi-skilled student, athlete, e-sports aspirant, and creative storyteller.
+      I balance academics, sports, editing, and personal growth with consistency and passion.</p>
+    </div>
 
-        <h3 style="margin-top:10px; margin-bottom:8px">Highlights</h3>
-        <div class="three-col">
-          <div class="highlight">
-            <div class="icon" aria-hidden>
-              <!-- simple athlete SVG -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M16 7a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM9 14c.6-2 3-2 4 0 1 2 3 2 4 0" stroke="#0f1724" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <strong>Athlete</strong>
-              <div style="color:var(--muted)">Inter IIT volleyball • multi-sport background</div>
-            </div>
-          </div>
+    <h3>Highlights</h3>
+    <div class="three-col">
+      <div class="card"><strong>Athlete</strong><br>Inter IIT player with multi-sport background.</div>
+      <div class="card"><strong>E-Sports Player</strong><br>Pursuing pro-level gameplay.</div>
+      <div class="card"><strong>Creative Editor</strong><br>Travel reels & cinematic storytelling.</div>
+    </div>
+  </section>
 
-          <div class="highlight">
-            <div class="icon" aria-hidden>
-              <!-- esports icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 7v10M7 12h10" stroke="#0f1724" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <strong>E-Sports</strong>
-              <div style="color:var(--muted)">Focused training & performance tracking for 2025</div>
-            </div>
-          </div>
+  <!-- SPORTS -->
+  <section id="sports">
+    <h2>Sports Journey</h2>
 
-          <div class="highlight">
-            <div class="icon" aria-hidden>
-              <!-- film/edit icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="12" rx="2" stroke="#0f1724" stroke-width="1.4"/><path d="M7 10v4" stroke="#0f1724" stroke-width="1.4" stroke-linecap="round"/></svg>
-            </div>
-            <div>
-              <strong>Creative Editor</strong>
-              <div style="color:var(--muted)">Travel reels, Hindi voiceovers, cinematic edits</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Volleyball -->
+    <div class="accordion">Volleyball</div>
+    <div class="panel">
+      <p>• Inter IIT Volleyball Team<br>
+         • Played Spike Summit (IITGN)<br>
+         • State-level player in class 12</p>
+    </div>
 
-    <!-- SPORTS with Accordions -->
-    <section id="sports">
-      <h2>Sports Journey</h2>
+    <!-- Basketball -->
+    <div class="accordion">Basketball</div>
+    <div class="panel">
+      <p>• District-level player (8th & 9th)</p>
+    </div>
 
-      <!-- Volleyball card (has nested detail) -->
-      <div class="card">
-        <details>
-          <summary>
-            <span style="font-weight:700">Volleyball</span>
-            <span class="caret" aria-hidden>
-              <!-- caret svg -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#0f1724" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </summary>
+    <!-- Kabaddi -->
+    <div class="accordion">Kabaddi</div>
+    <div class="panel">
+      <p>• Regional-level tournament participant</p>
+    </div>
 
-          <div class="panel volley-bg">
-            <p style="margin:0 0 8px 0"><strong>Summary:</strong> Inter IIT Volleyball Team • Spike Summit (IITGN) • State-level player (12th grade).</p>
+  </section>
 
-            <!-- nested accordions inside volleyball -->
-            <details style="margin-top:8px; border-radius:10px; overflow:hidden;">
-              <summary style="padding:10px; font-weight:600; cursor:pointer">Skills & Strengths</summary>
-              <div style="padding:10px 12px; background:rgba(15,23,36,0.02); border-radius:8px;">
-                <ul style="margin:0 0 0 18px; color:var(--muted)">
-                  <li>Blocking & Defense</li>
-                  <li>Serving & Reception</li>
-                  <li>Team coordination & Communication</li>
-                  <li>Agility, Stamina & Court Awareness</li>
-                </ul>
-              </div>
-            </details>
+  <!-- ESPORTS -->
+  <section id="esports">
+    <h2>E-Sports Profile</h2>
 
-            <details style="margin-top:8px; border-radius:10px; overflow:hidden;">
-              <summary style="padding:10px; font-weight:600; cursor:pointer">Notable Matches & Achievements</summary>
-              <div style="padding:10px 12px; background:rgba(255,255,255,0.6); border-radius:8px; color:var(--muted)">
-                <ul style="margin:0 0 0 18px">
-                  <li>Represented Inter IIT team</li>
-                  <li>Played in Spike Summit (IITGN)</li>
-                  <li>State-level representation in 12th grade</li>
-                </ul>
-              </div>
-            </details>
+    <div class="accordion">My E-Sports Goal</div>
+    <div class="panel">
+      <p>Aiming for a professional e-sports career in 2025 with structured training and performance tracking.</p>
+    </div>
 
-            <details style="margin-top:8px; border-radius:10px; overflow:hidden;">
-              <summary style="padding:10px; font-weight:600; cursor:pointer">Training Routine</summary>
-              <div style="padding:10px 12px; background:rgba(15,23,36,0.02); border-radius:8px; color:var(--muted)">
-                <p style="margin:0">Regular practice focusing on drills — blocking, spiking, footwork, and team scrimmages. Focus on conditioning & tactical sessions.</p>
-              </div>
-            </details>
-          </div>
-        </details>
-      </div>
+    <h3 style="margin-top:20px;">Skills</h3>
+    <div class="skills-list">
+      <div class="card">Aim Accuracy</div>
+      <div class="card">Fast Reflexes</div>
+      <div class="card">Game Sense</div>
+      <div class="card">Team Communication</div>
+      <div class="card">Map Knowledge</div>
+      <div class="card">Calm & Focused Play</div>
+    </div>
+  </section>
 
-      <!-- Basketball card -->
-      <div class="card">
-        <details>
-          <summary>
-            <span style="font-weight:700">Basketball</span>
-            <span class="caret" aria-hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#0f1724" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </summary>
-          <div class="panel basket-bg">
-            <p style="margin:0 0 8px 0"><strong>Summary:</strong> District-level basketball player (8th & 9th grade).</p>
+  <!-- CREATIVE -->
+  <section id="creative">
+    <h2>Creative Work</h2>
 
-            <details style="margin-top:8px; border-radius:10px; overflow:hidden;">
-              <summary style="padding:10px; font-weight:600; cursor:pointer">Skills & Focus</summary>
-              <div style="padding:10px 12px; background:rgba(15,23,36,0.02); border-radius:8px; color:var(--muted)">
-                <ul style="margin:0 0 0 18px"><li>Dribbling & Ball Control</li><li>Team Play & Positioning</li><li>Endurance & Speed</li></ul>
-              </div>
-            </details>
+    <div class="accordion">What I Create</div>
+    <div class="panel">
+      <p>Emotional Hindi travel reels, cinematic edits, and storytelling videos including transitions and colour grading.</p>
+    </div>
 
-            <details style="margin-top:8px; border-radius:10px; overflow:hidden;">
-              <summary style="padding:10px; font-weight:600; cursor:pointer">Achievements</summary>
-              <div style="padding:10px 12px; background:rgba(255,255,255,0.6); border-radius:8px; color:var(--muted)">
-                <ul style="margin:0 0 0 18px"><li>District-level participation & performance</li></ul>
-              </div>
-            </details>
-          </div>
-        </details>
-      </div>
+    <h3 style="margin-top:20px;">Tools I Use</h3>
+    <div class="skills-list">
+      <div class="card">Adobe Premiere Pro</div>
+      <div class="card">CapCut</div>
+      <div class="card">VN Editor</div>
+      <div class="card">Lightroom</div>
+    </div>
+  </section>
 
-      <!-- Kabaddi card -->
-      <div class="card">
-        <details>
-          <summary>
-            <span style="font-weight:700">Kabaddi</span>
-            <span class="caret" aria-hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#0f1724" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </summary>
-          <div class="panel kabaddi-bg">
-            <p style="margin:0"><strong>Summary:</strong> Regional-level Kabaddi tournament participant. Strong tackling & team coordination skills.</p>
+  <!-- ACADEMICS -->
+  <section id="academics">
+    <h2>Academics</h2>
+    <div class="accordion">Academic Summary</div>
+    <div class="panel">
+      <p>Strong conceptual learner with clear communication skills and a balanced approach between academics, sports, and creativity.</p>
+    </div>
+  </section>
 
-            <details style="margin-top:8px; border-radius:10px; overflow:hidden;">
-              <summary style="padding:10px; font-weight:600; cursor:pointer">Skills</summary>
-              <div style="padding:10px 12px; background:rgba(15,23,36,0.02); border-radius:8px; color:var(--muted)">
-                <ul style="margin:0 0 0 18px"><li>Tackling & Reflexes</li><li>Team Defense & Strategy</li></ul>
-              </div>
-            </details>
-          </div>
-        </details>
-      </div>
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
 
-    </section>
+    <div class="card">
+      <p><strong>Email:</strong> <a class="link-btn" href="mailto:akshaybirman2174@gmail.com">akshaybirman2174@gmail.com</a></p>
 
-    <!-- E-SPORTS -->
-    <section id="esports">
-      <h2>E-Sports Profile</h2>
-      <div class="card">
-        <p class="lead">Aiming for a professional e-sports career in 2025 with structured training, aim & reaction drills, and performance tracking.</p>
+      <p><strong>Instagram:</strong> 
+        <a class="link-btn" target="_blank" href="https://www.instagram.com/akshayybirman?igsh=cWFlbGFnZjJpNWQ1">
+          @akshayybirman
+        </a>
+      </p>
+    </div>
+  </section>
 
-        <h3 style="margin-top:10px">Skills</h3>
-        <div class="skills-list">
-          <div class="skill-pill">Aim Accuracy</div>
-          <div class="skill-pill">Fast Reflexes</div>
-          <div class="skill-pill">Game Sense</div>
-          <div class="skill-pill">Team Communication</div>
-          <div class="skill-pill">Map Knowledge</div>
-          <div class="skill-pill">Calm & Focus</div>
-        </div>
-      </div>
-    </section>
+  <div class="footer">
+    © 2025 Akshay Birman | All Rights Reserved
+  </div>
 
-    <!-- CREATIVE -->
-    <section id="creative">
-      <h2>Creative Work</h2>
-      <div class="card">
-        <p class="lead">I create emotional Hindi travel reels, cinematic edits, and visual storytelling with attention to transitions and colour grading.</p>
-
-        <h3 style="margin-top:10px">Tools I Use</h3>
-        <div class="skills-list">
-          <div class="skill-pill">Adobe Premiere Pro</div>
-          <div class="skill-pill">CapCut</div>
-          <div class="skill-pill">VN Editor</div>
-          <div class="skill-pill">Lightroom</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ACADEMICS -->
-    <section id="academics">
-      <h2>Academics</h2>
-      <div class="card">
-        <p class="lead">Strong conceptual learner with clear communication skills and consistent academic performance while balancing sports and creative work.</p>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="card contact-card">
-        <div class="contact-grid">
-          <div class="contact-card">
-            <strong>Email</strong>
-            <div style="margin-top:6px; color:var(--muted)">akshaybirman2174@gmail.com</div>
-          </div>
-
-          <div class="contact-card">
-            <strong>Instagram</strong>
-            <div style="margin-top:6px; color:var(--muted)">@akshayybirman</div>
-          </div>
-
-          <div class="contact-card">
-            <strong>Availability</strong>
-            <div style="margin-top:6px; color:var(--muted)">Open to collaborations, tournaments, and editing projects.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      © 2025 Akshay Birman | Built with care
-    </footer>
-
-  </main>
-
+  <!-- Accordion Script -->
   <script>
-    // Improve summary keyboard accessibility and add small animation bounce on open
-    document.querySelectorAll('details').forEach(d => {
-      const sum = d.querySelector('summary');
-      sum.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          d.open = !d.open;
-        }
+    let acc = document.getElementsByClassName("accordion");
+
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        let panel = this.nextElementSibling;
+        panel.style.display = (panel.style.display === "block") ? "none" : "block";
       });
-      // small focus ring
-      sum.addEventListener('focus', ()=> sum.style.outline = '2px solid rgba(14,165,233,0.25)');
-      sum.addEventListener('blur', ()=> sum.style.outline = 'none');
-    });
+    }
   </script>
+
 </body>
 </html>
-
